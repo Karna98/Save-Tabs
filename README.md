@@ -44,7 +44,7 @@ Save Tab currently supports Chrome, Firefox.
             - *saveTab.js*
             - *background.js*
         3. In **firefox**, rename `manifest-firefox.json` to `manifest.json`.
-        2. Open Firefox browser and visit [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox).
+        2. Open Firefox browser and visit <a href="about:debugging#/runtime/this-firefox">`about:debugging#/runtime/this-firefox`</a>.
         3. Under **Temporary Extensions**, click on **Load Temporary Add-on..**. File explorer opens, navigate to *`Save-Tabs/firefox`* folder and select `manifest.json`.
         4. On successfully loading, **Save Tabs** extension will be listed under **Temporary Extensions**.
         5. Also, user can use extension by clicking on 'Save Tabs' extension icon listed on Browser ToolBar.
@@ -61,7 +61,7 @@ Save Tab currently supports Chrome, Firefox.
             - *background.js*
         3. In **chrome**, rename `manifest-chrome.json` to `manifest.json`.
         4. In ***saveTab.html***, update `<link rel="stylesheet" type="text/css" href="saveTab.css" />` to `<link rel="stylesheet" type="text/css" href="saveTab-chrome.css" />` and save updated file.
-        5. Open Chrome browser and visit [chrome://extensions/](chrome://extensions/).
+        5. Open Chrome browser and visit <a href="chrome://extensions/">`chrome://extensions`/</a>.
         6. Click on **Load Unpacked**. File explorer opens, navigate to *`Save-Tabs/chrome`* folder and select `manifest.json`.
         7. On successfully loading, **Save Tabs** extension will be listed.
         8. User can use extension by clicking on 'Save Tabs' extension icon listed on Browser ToolBar.

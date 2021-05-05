@@ -1,3 +1,5 @@
+// manifest.json for Firefox Extension.
+
 {
 	"manifest_version": 2,
 	"name": "Save Tabs",

@@ -1,0 +1,37 @@
+{
+	"manifest_version": 3,
+	"name": "Save Tabs",
+	"version": "1.0",
+
+	"description": "Export and Import Tabs.",
+	"homepage_url": "https://github.com/karna98/Save-Tabs",
+
+	"icons": {
+		"16": "icons/Save_Tabs_16.png",
+		"32": "icons/Save_Tabs_32.png",
+		"48": "icons/Save_Tabs_48.png",
+		"64": "icons/Save_Tabs_64.png",
+		"96": "icons/Save_Tabs_96.png",
+		"128": "icons/Save_Tabs_128.png"
+	},
+
+	"permissions": [
+		"tabs",
+		"downloads"
+	],
+
+	"incognito": "split",
+	
+	"action": {
+		"default_icon": {
+			"16": "icons/Save_Tabs_16.png",
+			"32": "icons/Save_Tabs_32.png",
+			"48": "icons/Save_Tabs_48.png",
+			"64": "icons/Save_Tabs_64.png",
+			"96": "icons/Save_Tabs_96.png",
+			"128": "icons/Save_Tabs_128.png"
+		},
+		"default_title": "Save Tabs",
+		"default_popup": "saveTab.html"
+	}
+}

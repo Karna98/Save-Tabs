@@ -1,100 +1,201 @@
-html, body {
+body,html {
   margin: 0;
   padding: 0;
-  width: 100%;
+  height: 100%;
+  width: 100%
+}
+
+:root {
+  --color1: #feffff;
+  --color2: #def2f1;
+  --color3: #3aafa9;
+  --color4: #2b7a78;
+  --color5: #17252a
+}
+
+.content,body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: .5rem
 }
 
 body {
-  display: flex;
-  padding: 0.5rem;
-  align-self: center;
-  justify-content: center;
+  color: var(--color5)
 }
 
 .content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start
+}
+
+.fieldset-content,fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 0.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center
+}
+
+fieldset,legend {
+  background-color: var(--color2)
 }
 
 fieldset {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 0.5rem 0;
-  padding: 0.5rem; 
-  align-items: center;
-  border: 0.1rem solid transparent; 
-  box-sizing: border-box;
-  border-radius: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.08), 0 0 0.6rem rgba(0, 0, 0, 0.05);
+  margin: .5rem 0;
+  padding: .5rem;
+  border: 1px solid transparent;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0 .2rem .5rem var(--color4);
+          box-shadow: 0 .2rem .5rem var(--color4)
 }
 
-legend{
-  margin: 0; 
-  padding: 0.2rem 0.6rem; 
-  font-weight: bold;
-  border-radius: 1rem;
-  box-shadow: inset 0 -0.6rem 1rem rgba(0, 0, 0, 0.14), 0 0 0.6rem rgba(0, 0, 0, 0.05);
-} 
+legend {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 .5rem;
+  padding: .2rem .6rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-variant-caps: petite-caps;
+  border-radius: .5rem;
+  -webkit-box-shadow: inset 0 .1rem 1rem var(--color3);
+          box-shadow: inset 0 .1rem 1rem var(--color3);
+  border-top: 1px solid var(--color4);
+  border-bottom: 1px solid var(--color4)
+}
+
+.fieldset-content {
+  width: 100%;
+  font-size: 1.2rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly
+}
+
+.description,.file-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 3rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center
+}
 
 .description {
-  display: flex;
-  padding: 0.2rem;
-  align-self: flex-start;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.file-name, .logs {
-  display: flex;
   width: calc(100% - 1rem);
-  align-items: flex-start;
-  justify-content: center;
-  background: #fff;
-  border-radius: 2rem;
+  padding: 0 .5rem;
+  font-style: italic
 }
 
 .file-name {
-  padding: 0.5rem;
-  height: 2rem;
+  padding: .5rem;
+  width: calc(100% - 2rem);
+  border-radius: .5rem
 }
 
 .logs {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  height: 9rem;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 30rem;
+  padding: 0 .5rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-size: 1.1rem;
   word-break: break-all;
-  border-radius: 0.3rem;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color3) var(--color1)
+}
+
+.button,.button:hover img {
+  -webkit-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out
 }
 
 .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  width: 5rem;
-  height: 2rem;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  background-color: #CFF2F2;
-  color: #2a2a2a;
-  border: 1px solid #2a2a2a;  
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: .5rem 0;
+  width: 8rem;
+  height: 3rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background-color: var(--color1);
   border-radius: 2rem;
   cursor: pointer;
-  transition: 0.5s all ease-in-out;
+  -webkit-box-shadow: 0 .3rem .6rem rgba(0,0,0,.2),0 0 .3rem rgba(0,0,0,.05);
+          box-shadow: 0 .3rem .6rem rgba(0,0,0,.2),0 0 .3rem rgba(0,0,0,.05)
+}
+
+.button img,.button:hover {
+  -webkit-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out
 }
 
 .button:hover {
-  background-color: #2a2a2a;
-  color: #CFF2F2; 
-  transition: 0.3s all ease-in-out;
+  -webkit-box-shadow: 0 .6rem 1rem rgba(0,0,0,.2),0 0 .6rem rgba(0,0,0,.05);
+          box-shadow: 0 .6rem 1rem rgba(0,0,0,.2),0 0 .6rem rgba(0,0,0,.05)
+}
+
+.button:active {
+  -webkit-box-shadow: 0 .3rem .6rem rgba(0,0,0,.2),0 0 .3rem rgba(0,0,0,.05);
+          box-shadow: 0 .3rem .6rem rgba(0,0,0,.2),0 0 .3rem rgba(0,0,0,.05);
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out
+}
+
+.button img {
+  padding: .25rem;
+  -webkit-filter: invert(.5);
+          filter: invert(.5)
+}
+
+.button:hover img {
+  -webkit-filter: invert(0);
+          filter: invert(0);
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1)
 }
 
 .hidden {
-  display: none;
+  display: none
 }

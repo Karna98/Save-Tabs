@@ -12,7 +12,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 	 */
 	let browserDetected = 1;
 
-	// Browser's API Object. 
+	// Browser's API Object.
 	let browserAPI;
 
 	try {
@@ -32,7 +32,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 	const logger = (message) => {
 		const logObject = {
 			time: new Date().valueOf(),
-			message: message,
+			message: message
 		};
 
 		// Check if 'saveTabs' in present or not.
@@ -52,13 +52,12 @@ window.addEventListener(`DOMContentLoaded`, () => {
 			}
 
 			// Store logs to local storage and then empty LoggerQueue.
-			browserAPI.storage.local.set(
-				{
-					saveTabs: {
-						logs: FinalLogsQueue,
-						updated_at: updated_at,
-					},
-				});
+			browserAPI.storage.local.set({
+				saveTabs: {
+					logs: FinalLogsQueue,
+					updated_at: updated_at
+				}
+			});
 		});
 	};
 
@@ -122,7 +121,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 			browserAPI.runtime.sendMessage(
 				{
 					type: `imported_file_content`,
-					data: fileContent,
+					data: fileContent
 				},
 				(response) => {
 					try {
@@ -152,8 +151,8 @@ window.addEventListener(`DOMContentLoaded`, () => {
 			// Default File Name.
 			return `Save_Tabs_${new Date()
 				.toLocaleString()
-				.replaceAll(/(, )| /g, '_')
-				.replaceAll(/[,://]/g, '-')}.json`;
+				.replaceAll(/(, )| /g, "_")
+				.replaceAll(/[,://]/g, "-")}.json`;
 		} else {
 			// User Input File Name.
 			return `${fileName}.json`;
@@ -177,7 +176,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 
 		// Structure of file which will be downloaded
 		let fileContent = Object({
-			tabs: [],
+			tabs: []
 		});
 
 		/**
@@ -202,7 +201,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 
 				logErrorOrSuccess(`downloadedStatus`, {
 					state: delta.state.current,
-					fileName: mappedValueForID.fileName,
+					fileName: mappedValueForID.fileName
 				});
 
 				// Remove Listener
@@ -218,7 +217,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		const initiateDownload = (fileContent) => {
 			// Create Blob of file content
 			const file = new Blob([JSON.stringify(fileContent)], {
-				type: `plain/text`,
+				type: `plain/text`
 			});
 
 			// Get file name
@@ -231,33 +230,38 @@ window.addEventListener(`DOMContentLoaded`, () => {
 				url: url,
 				filename: fileName,
 				saveAs: true,
-				conflictAction: `uniquify`,
+				conflictAction: `uniquify`
 			};
 
 			logErrorOrSuccess(`readyForDownload`, {
-				fileName: fileName,
+				fileName: fileName
 			});
 
-			try {
+			if (browserDetected == 1) {
 				// Firefox
 				browserAPI.downloads.download(metaData).then(
 					(id) => {
-						downloadQueue.set(id, { url, fileName });
+						downloadQueue.set(id, {
+							url,
+							fileName
+						});
 
 						// Add Listener to keep track of download
 						browserAPI.downloads.onChanged.addListener(onChangedListener);
-					},
-					() => {
+					}, () => {
 						logErrorOrSuccess(`downloadedStatus`, {
 							state: `interrupted`,
-							fileName: fileName,
+							fileName: fileName
 						});
 					}
 				);
-			} catch (error) {
+			} else {
 				// Chrome
 				browserAPI.downloads.download(metaData, (id) => {
-					downloadQueue.set(id, { url, fileName });
+					downloadQueue.set(id, {
+						url,
+						fileName
+					});
 
 					// Add Listener to keep track of download
 					browserAPI.downloads.onChanged.addListener(onChangedListener);
@@ -269,12 +273,12 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		tabs.map((tab) => {
 			if (tab.groupId === undefined || tab.groupId == -1) {
 				fileContent.tabs.push({
-					url: tab.url,
+					url: tab.url
 				});
 			} else {
 				fileContent.tabs.push({
 					url: tab.url,
-					groupId: tab.groupId,
+					groupId: tab.groupId
 				});
 
 				if (tab.groupId != -1 && !groupTabsQueue.has(tab.groupId)) {
@@ -284,7 +288,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 			}
 		});
 
-		if (!groupTabsQueue.size || promiseArray.length) {
+		if (groupTabsQueue.size || promiseArray.length) {
 			// if group details are requested
 			Promise.allSettled(promiseArray).then((results) => {
 				results.forEach((result) => {
@@ -333,7 +337,8 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		browserAPI.storage.local.get(`saveTabs`, (object) => {
 			if (object.saveTabs !== undefined)
 				(Date.now() - object.saveTabs.updated_at > 600000) ?
-					browserAPI.storage.local.clear() : populateLogs();
+					browserAPI.storage.local.clear() :
+					populateLogs();
 		});
 	};
 

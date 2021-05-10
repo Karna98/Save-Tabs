@@ -1,9 +1,7 @@
-// manifest.json for Firefox Extension.
-
 {
 	"manifest_version": 2,
 	"name": "Save Tabs",
-	"version": "1.0",
+	"version": "1.1",
 
 	"description": "Export and Import Tabs.",
 	"homepage_url": "https://github.com/karna98/Save-Tabs",

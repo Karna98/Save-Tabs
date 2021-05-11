@@ -1,5 +1,3 @@
-// manifest.json for Chrome Extension.
-
 {
 	"manifest_version": 3,
 	"name": "Save Tabs",
@@ -19,11 +17,17 @@
 
 	"permissions": [
 		"tabs",
-		"downloads"
+		"tabGroups",
+		"downloads",
+		"storage"
 	],
 
 	"incognito": "split",
 	
+	"background": {
+		"service_worker": "background.js"
+	},
+
 	"action": {
 		"default_icon": {
 			"16": "icons/Save_Tabs_16.png",

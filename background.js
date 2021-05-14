@@ -21,8 +21,11 @@ try {
 	browserAPI = chrome;
 }
 
+// Save Tabs Settings Object
+let saveTabsSettingsObject;
+
 // Keep track of all Logs and emptied when stored in local storage. 
-let LoggerQueue = [];
+let LoggerQueue;
 
 /**
  * Logs message to LoggerQueue.
@@ -43,23 +46,26 @@ const logger = (message) => {
  * @param	{String} 	messageType Type of Message
  */
 const logErrorOrSuccess = (messageType, delta) => {
-	switch (messageType) {
-		case `error`:
-			logger(delta.message || delta);
-			break;
-		case `newTabCreated`:
-			logger(
-				`Created new tab for ${(
-					delta.status === "loading" ? delta.pendingUrl : delta.title
-				).italics()}`
-			);
-			break;
-		case `newGroupCreated`:
-			logger(
-				`Tabs successfully grouped ${delta.title === "" ? "." : "(" + delta.title.bold().italics() + ")."
-				}`
-			);
-			break;
+	// If logging enabled.
+	if (saveTabsSettingsObject.logsState) {
+		switch (messageType) {
+			case `error`:
+				logger(delta.message || delta);
+				break;
+			case `newTabCreated`:
+				logger(
+					`Created new tab for ${(
+						delta.status === "loading" ? delta.pendingUrl : delta.title
+					).italics()}`
+				);
+				break;
+			case `newGroupCreated`:
+				logger(
+					`Tabs successfully grouped ${delta.title === "" ? "." : "(" + delta.title.bold().italics() + ")."
+					}`
+				);
+				break;
+		}
 	}
 };
 
@@ -83,10 +89,11 @@ const importTabs = (fileContent) => {
 			// 1. If tabs are opened in FireFox
 			// 2. For Tabs which are not grouped.
 
-			// Create tab and log outcome. 
+			// Create new tab and log outcome.
 			browserAPI.tabs
 				.create({
 					url: tab.url,
+					active: false
 				})
 				.then(
 					logErrorOrSuccess.bind(null, `newTabCreated`),
@@ -108,7 +115,7 @@ const importTabs = (fileContent) => {
 			}
 
 			groupedTabsPromiseArray.push(
-				// Create tab 
+				// Create new tab 
 				browserAPI.tabs.create({
 					url: tab.url,
 					active: false,
@@ -122,40 +129,43 @@ const importTabs = (fileContent) => {
 	 * @version    1.0.0
 	 */
 	const insertNewLogs = () => {
-		// Check if 'saveTabs' in present or not.
-		browserAPI.storage.local.get(`saveTabs`, (object) => {
+		// If logging enabled.
+		if (saveTabsSettingsObject.logsState) {
+			// Check if 'saveTabs' in present or not.
+			browserAPI.storage.local.get(`saveTabs`, (object) => {
 
-			setTimeout(() => {
-				let FinalLogsQueue = [];
+				setTimeout(() => {
+					let FinalLogsQueue = [];
 
-				// Latest logged message time.
-				const updated_at = LoggerQueue[0].time;
+					// Latest logged message time.
+					const updated_at = LoggerQueue[0].time;
 
-				if (
-					object &&
-					Object.keys(object).length === 0 &&
-					object.constructor === Object
-				) {
-					FinalLogsQueue = LoggerQueue;
-				} else {
-					object.saveTabs.logs.unshift(...LoggerQueue);
-					FinalLogsQueue = object.saveTabs.logs;
-				}
-
-				// Store logs to local storage and then empty LoggerQueue.
-				browserAPI.storage.local.set(
-					{
-						saveTabs: {
-							logs: FinalLogsQueue,
-							updated_at: updated_at,
-						},
-					},
-					() => {
-						LoggerQueue = [];
+					if (
+						object &&
+						Object.keys(object).length === 0 &&
+						object.constructor === Object
+					) {
+						FinalLogsQueue = LoggerQueue;
+					} else {
+						object.saveTabs.logs.unshift(...LoggerQueue);
+						FinalLogsQueue = object.saveTabs.logs;
 					}
-				);
-			}, 1000);
-		});
+
+					// Store logs to local storage and then empty LoggerQueue.
+					browserAPI.storage.local.set(
+						{
+							saveTabs: {
+								logs: FinalLogsQueue,
+								updated_at: updated_at,
+							},
+						},
+						() => {
+							LoggerQueue = [];
+						}
+					);
+				}, 1000);
+			});
+		}
 	};
 
 	/**
@@ -170,20 +180,15 @@ const importTabs = (fileContent) => {
 				tabIds: group.tabs
 			})
 				.then((delta) => {
-
-					(group.title === ``) ?
-						// If group title in empty
-						logErrorOrSuccess.bind(null, `newGroupCreated`) :
-						// Update Group with title name
-						browserAPI.tabGroups
-							.update(delta, {
-								title: group.title,
-								collapsed: true,
-							})
-							.then(
-								logErrorOrSuccess.bind(null, `newGroupCreated`),
-								logErrorOrSuccess.bind(null, `error`)
-							);
+					browserAPI.tabGroups
+						.update(delta, {
+							title: group.title,
+							collapsed: true,
+						})
+						.then(
+							logErrorOrSuccess.bind(null, `newGroupCreated`),
+							logErrorOrSuccess.bind(null, `error`)
+						);
 				}, logErrorOrSuccess.bind(null, `error`));
 		});
 
@@ -239,7 +244,7 @@ const importTabs = (fileContent) => {
 				groupMetaData.set(groupIdForTab, metaData);
 
 				// Log sucessful creation of tab.
-				logErrorOrSuccess.bind(null, `newTabCreated`);
+				logErrorOrSuccess(`newTabCreated`, result.value);
 
 				// If all promises are fulfilled then group tabs.
 				if (groupTabsQueue.size == 0) {
@@ -259,10 +264,21 @@ const importTabs = (fileContent) => {
 const interpretRequest = (message, sender, sendResponse) => {
 	// Check if requesting for import tabs functionality
 	if (message.type === `imported_file_content`) {
+		LoggerQueue = [];
+		saveTabsSettingsObject = message.saveTabsSettings
 		importTabs(message.data);
 		sendResponse(`Request Submitted Successfully!`);
 	}
 };
+
+// Sync updated local storage changes
+browserAPI.storage.onChanged.addListener((changes, area) => {
+	if (area === `local` && changes.saveTabsSettings !== undefined) {
+		browserAPI.storage.local.get(`saveTabsSettings`, (object) => {
+			saveTabsSettingsObject = object.saveTabsSettings;
+		})
+	}
+});
 
 // Listener to listen message received from saveTabs.js
 browserAPI.runtime.onMessage.addListener(interpretRequest);

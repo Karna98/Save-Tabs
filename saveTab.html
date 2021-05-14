@@ -12,41 +12,37 @@
 	<div class="content" id="popup-content">
 		<div class="export-section">
 			<fieldset>
-				<legend>
-					Export Tabs
-				</legend>
+				<legend>Export Tabs</legend>
 				<div class="fieldset-content">
-				<div class="description">
-					Exports all the open tabs to file.
-				</div>
-				<input type="text" id="file-name" placeholder="Enter file name (Optional)." class="file-name"/>
-				<div class="button" id="export">Export <img src="icons/file_download.svg" alt="Export Icon"/></div>
+					<div class="description">Exports all the open tabs to file.</div>
+					<input type="text" id="file-name" placeholder="Enter file name (Optional)." class="file-name" />
+					<div class="button" id="export">
+						Export <img src="icons/file_download.svg" alt="Export Icon" />
+					</div>
 				</div>
 			</fieldset>
 		</div>
 		<div class="import-section">
 			<fieldset>
-				<legend>
-					Import Tabs
-				</legend>
+				<legend>Import Tabs</legend>
 				<div class="fieldset-content">
-				<div class="description">
-					Select file (.json) to import tabs.
-				</div>
-				<input type="file" id="file" accept=".json" class="hidden"/>
-				<label for="file" class="button import">Import <img src="icons/file_upload.svg" alt="Import Icon"/>
-				</label>
+					<div class="description">Select file (.json) to import tabs.</div>
+					<input type="file" id="file" accept=".json" class="hidden" />
+					<label for="file" class="button import">Import <img src="icons/file_upload.svg" alt="Import Icon" />
+					</label>
 				</div>
 			</fieldset>
 		</div>
 		<div class="logs-section">
 			<fieldset>
 				<legend>
-					Logs
+					<div>
+						Logs
+						<input id="logs-state" type="checkbox" />
+					</div>
 				</legend>
 				<div class="fieldset-content">
-					<div id="logs" class="logs">
-				</div>
+					<div id="logs" class="logs"></div>
 				</div>
 			</fieldset>
 		</div>

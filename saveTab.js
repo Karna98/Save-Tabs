@@ -24,6 +24,45 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		browserAPI = chrome;
 	}
 
+	// Save Tabs Settings Object
+	let saveTabsSettingsObject = {
+		// Disabled by default
+		logsState: false
+	};
+
+	/**
+	 * Set new settings in local storage.
+	 * @version    1.0.0
+	 * @param    {String} type To determine to intialize or update settings in local storage. (`intialize` or `update`)
+	 */
+	const saveTabsSettings = (type) => {
+		// Check if 'saveTabsSettings' in present or not.
+		browserAPI.storage.local.get(`saveTabsSettings`, (object) => {
+			if (
+				(object &&
+					Object.keys(object).length === 0 &&
+					object.constructor === Object) || (type === `update`)
+			) {
+				// Store settings to local storage.
+				browserAPI.storage.local.set({
+					saveTabsSettings: saveTabsSettingsObject
+				});
+			} else if (type === `intialize`) {
+				saveTabsSettingsObject = object.saveTabsSettings
+				document.getElementById(`logs-state`).checked = object.saveTabsSettings.logsState;
+				updateDOMSettings();
+			}
+		});
+	};
+
+	/**
+	* Update DOM elements based on saveTabsSettings 
+	* @version    1.0.0
+	*/
+	const updateDOMSettings = () => {
+		document.getElementById(`logs-state`).checked = saveTabsSettingsObject.logsState;
+	};
+
 	/**
 	 * Store logs in local storage.
 	 * @version    1.1.0
@@ -51,7 +90,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 				FinalLogsQueue = object.saveTabs.logs;
 			}
 
-			// Store logs to local storage and then empty LoggerQueue.
+			// Store logs to local storage..
 			browserAPI.storage.local.set({
 				saveTabs: {
 					logs: FinalLogsQueue,
@@ -90,17 +129,19 @@ window.addEventListener(`DOMContentLoaded`, () => {
 	 * @param	{String} 	messageType Type of Message
 	 */
 	const logErrorOrSuccess = (messageType, delta) => {
-		switch (messageType) {
-			case `error`:
-				logger(delta.message || delta);
-				break;
-			case `readyForDownload`:
-				logger(`Ready for download - ${delta.fileName.italics()}`);
-				break;
-			case `downloadedStatus`:
-				logger(`Download ${delta.state} - ${delta.fileName.italics()}`);
-				break;
-		}
+		// If logging enabled.
+		if (saveTabsSettingsObject.logsState)
+			switch (messageType) {
+				case `error`:
+					logger(delta.message || delta);
+					break;
+				case `readyForDownload`:
+					logger(`Ready for download - ${delta.fileName.italics()}`);
+					break;
+				case `downloadedStatus`:
+					logger(`Download ${delta.state} - ${delta.fileName.italics()}`);
+					break;
+			}
 	};
 
 	/**
@@ -121,11 +162,16 @@ window.addEventListener(`DOMContentLoaded`, () => {
 			browserAPI.runtime.sendMessage(
 				{
 					type: `imported_file_content`,
-					data: fileContent
+					data: fileContent,
+					saveTabsSettings: saveTabsSettingsObject
 				},
 				(response) => {
 					try {
 						console.log(response);
+						// Close popup in Chrome. No affect on Firefox sidebar.
+						// If popup remains, one of the observed issues is on importing tabs (all of them grouped) and then importing new file, it doesn't get import.
+						// Need to check if this can be better handled by handling file reader in more efficient manner.
+						window.close();
 					} catch (error) {
 						console.log(error);
 					}
@@ -337,7 +383,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		browserAPI.storage.local.get(`saveTabs`, (object) => {
 			if (object.saveTabs !== undefined)
 				(Date.now() - object.saveTabs.updated_at > 600000) ?
-					browserAPI.storage.local.clear() :
+					browserAPI.storage.local.remove('saveTabs') :
 					populateLogs();
 		});
 	};
@@ -356,12 +402,22 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		// Listen on clicking Export button.
 		document.getElementById(`export`).addEventListener(`click`, exportTabs);
 
-		// Sync updated storage under Logs section
+		// Sync updated local storage changes.
 		browserAPI.storage.onChanged.addListener((changes, area) => {
 			if (area === `local` && changes.saveTabs !== undefined) {
 				populateLogs();
+			} else if (area === `local` && changes.saveTabsSettings !== undefined) {
+				updateDOMSettings();
 			}
 		});
+
+		// Check or Intialize saveTabs settings.
+		saveTabsSettings(`intialize`);
+
+		document.getElementById(`logs-state`).addEventListener(`click`, (e) => {
+			saveTabsSettingsObject.logsState = e.target.checked;
+			saveTabsSettings(`update`);
+		})
 	};
 
 	init();

@@ -389,6 +389,28 @@ window.addEventListener(`DOMContentLoaded`, () => {
 	};
 
 	/**
+	 * Open URL in new tabs.
+	 * @version		1.0.0
+	 * @param		{String} type	To determine URL to be opened.
+	 */
+	const openURL = (type) => {
+		let url;
+		switch (type) {
+			case `links-github`:
+				url = `https://github.com/karna98/Save-Tabs`;
+				break;
+			case `links-report`:
+				url = `https://github.com/karna98/Save-Tabs#issues-and-suggestions`;
+				break;
+		}
+
+		browserAPI.tabs
+			.create({
+				url: url
+			});
+	};
+
+	/**
 	 * Intializes required checks and listeners.
 	 * @version    1.0.0
 	 */
@@ -414,10 +436,15 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		// Check or Intialize saveTabs settings.
 		saveTabsSettings(`intialize`);
 
+		// Get updated state of logs state (enabled/disabled)
 		document.getElementById(`logs-state`).addEventListener(`click`, (e) => {
 			saveTabsSettingsObject.logsState = e.target.checked;
 			saveTabsSettings(`update`);
-		})
+		});
+
+		// Open link in new tab when clicked.
+		document.getElementById(`links-github`).addEventListener(`click`, () => openURL(`links-github`));
+		document.getElementById(`links-report`).addEventListener(`click`, () => openURL(`links-report`));
 	};
 
 	init();

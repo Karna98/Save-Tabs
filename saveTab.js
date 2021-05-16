@@ -30,6 +30,17 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		logsState: false
 	};
 
+	// Custom message for different type of errors or success.
+	const logMessageMapping = {
+		success: {
+			tab: `Created new tab for `,
+			group: `Tabs successfully grouped.`
+		},
+		ready: `Ready for download - `,
+		interrupted: `Download interrupted - `,
+		complete: `Download completed - `
+	};
+
 	/**
 	 * Set new settings in local storage.
 	 * @version    1.0.0
@@ -48,7 +59,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 					saveTabsSettings: saveTabsSettingsObject
 				});
 			} else if (type === `intialize`) {
-				saveTabsSettingsObject = object.saveTabsSettings
+				saveTabsSettingsObject = object.saveTabsSettings;
 				document.getElementById(`logs-state`).checked = object.saveTabsSettings.logsState;
 				updateDOMSettings();
 			}
@@ -66,12 +77,12 @@ window.addEventListener(`DOMContentLoaded`, () => {
 	/**
 	 * Store logs in local storage.
 	 * @version    1.1.0
-	 * @param    {String} message	Logged Message.
+	 * @param    {Object} object	Metadata related to success or error log.
 	 */
-	const logger = (message) => {
+	const logger = (object) => {
 		const logObject = {
 			time: new Date().valueOf(),
-			message: message
+			data: object
 		};
 
 		// Check if 'saveTabs' in present or not.
@@ -113,11 +124,36 @@ window.addEventListener(`DOMContentLoaded`, () => {
 			if (object.saveTabs !== undefined) {
 				logSection.innerHTML = object.saveTabs.logs
 					.map(
-						(log) =>
-							`<p> ${new Date(log.time).toLocaleTimeString().bold()} - ${log.message
-							} </p>`
-					)
-					.join(`<br>`);
+						(log) => {
+							const data = log.data;
+							// Log message in detail
+							let verboseMessage;
+
+							if (data.type === `error`) {
+								// If type is 'error'
+								verboseMessage = data.message;
+							} else if (data.type === `success`) {
+								// If type is 'success'
+								verboseMessage = logMessageMapping[data.type][data.subType];
+
+								if (data.subType === `tab`)
+									// If sub-type is 'tab'
+									verboseMessage += (data.url).italics();
+								else
+									// If sub-type is 'group'
+									verboseMessage += ((data.groupName === ``) ? `` : ` (${(data.groupName).bold()})`);
+							} else {
+								// If type is 'ready' or 'interrupted' or 'complete'
+								verboseMessage = logMessageMapping[data.type] + (data.fileName).italics();
+							}
+
+							return `<p>
+								 ${new Date(log.time).toLocaleTimeString().toUpperCase().bold()} ${data.type.toUpperCase().bold()}
+								 <br>
+								 ${verboseMessage}
+							 </p>`;
+						})
+					.join(``);
 			}
 		});
 	};
@@ -129,19 +165,38 @@ window.addEventListener(`DOMContentLoaded`, () => {
 	 * @param	{String} 	messageType Type of Message
 	 */
 	const logErrorOrSuccess = (messageType, delta) => {
+		// Object containing metadata related to error or success
+		let logObject = {
+			// type 	: {error, ready, interrupted, complete}
+			// message	: {Message}				If type is 'error'
+			// fileName	: {Name of the file} 	If subType is 'ready' or 'interrupted' or 'complete'
+		};
+
 		// If logging enabled.
-		if (saveTabsSettingsObject.logsState)
+		if (saveTabsSettingsObject.logsState) {
 			switch (messageType) {
 				case `error`:
-					logger(delta.message || delta);
+					logObject = {
+						type: `error`,
+						message: (delta.message || delta)
+					};
 					break;
 				case `readyForDownload`:
-					logger(`Ready for download - ${delta.fileName.italics()}`);
+					logObject = {
+						type: `ready`,
+						fileName: delta.fileName
+					};
 					break;
 				case `downloadedStatus`:
-					logger(`Download ${delta.state} - ${delta.fileName.italics()}`);
+					logObject = {
+						type: delta.state,
+						fileName: delta.fileName
+					};
 					break;
 			}
+
+			logger(logObject);
+		}
 	};
 
 	/**
@@ -417,7 +472,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		document.getElementById(`logs-state`).addEventListener(`click`, (e) => {
 			saveTabsSettingsObject.logsState = e.target.checked;
 			saveTabsSettings(`update`);
-		})
+		});
 	};
 
 	init();

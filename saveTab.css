@@ -119,6 +119,7 @@ legend {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: calc(100% - 1rem);
   height: 30rem;
   padding: 0 .5rem;
   -webkit-box-pack: start;

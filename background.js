@@ -28,44 +28,50 @@ let saveTabsSettingsObject;
 let LoggerQueue;
 
 /**
- * Logs message to LoggerQueue.
- * @version    1.0.0
- * @param    {String} message	Message to be logged.
- */
-const logger = (message) => {
-	LoggerQueue.unshift({
-		time: new Date().valueOf(),
-		message: message,
-	});
-};
-
-/**
  * Logging error or success message.
  * @version	1.0.0
  * @param	{Object}	delta		Object returned from Promise.
  * @param	{String} 	messageType Type of Message
  */
 const logErrorOrSuccess = (messageType, delta) => {
+	// Object containing metadata related to error or success
+	let logObject = {
+		// type 	: {error, success}
+		// message	: {Message}				If type is 'error'
+		// subType 	: {tab, group} 			If type is 'success'
+		// url 		: {url_link} 			If subType is 'tab'
+		// groupName: {Name of the Group} 	If subType is 'group'
+	};
+
 	// If logging enabled.
 	if (saveTabsSettingsObject.logsState) {
 		switch (messageType) {
 			case `error`:
-				logger(delta.message || delta);
+				logObject = {
+					type: `error`,
+					message: (delta.message || delta)
+				};
 				break;
 			case `newTabCreated`:
-				logger(
-					`Created new tab for ${(
-						delta.status === "loading" ? delta.pendingUrl : delta.title
-					).italics()}`
-				);
+				logObject = {
+					type: `success`,
+					subType: `tab`,
+					url: (delta.status === "loading" ? delta.pendingUrl : delta.title)
+				};
 				break;
 			case `newGroupCreated`:
-				logger(
-					`Tabs successfully grouped ${delta.title === "" ? "." : "(" + delta.title.bold().italics() + ")."
-					}`
-				);
+				logObject = {
+					type: `success`,
+					subType: `group`,
+					groupName: delta.title
+				};
 				break;
 		}
+
+		LoggerQueue.unshift({
+			time: new Date().valueOf(),
+			data: logObject
+		});
 	}
 };
 
@@ -265,7 +271,7 @@ const interpretRequest = (message, sender, sendResponse) => {
 	// Check if requesting for import tabs functionality
 	if (message.type === `imported_file_content`) {
 		LoggerQueue = [];
-		saveTabsSettingsObject = message.saveTabsSettings
+		saveTabsSettingsObject = message.saveTabsSettings;
 		importTabs(message.data);
 		sendResponse(`Request Submitted Successfully!`);
 	}
@@ -276,7 +282,7 @@ browserAPI.storage.onChanged.addListener((changes, area) => {
 	if (area === `local` && changes.saveTabsSettings !== undefined) {
 		browserAPI.storage.local.get(`saveTabsSettings`, (object) => {
 			saveTabsSettingsObject = object.saveTabsSettings;
-		})
+		});
 	}
 });
 

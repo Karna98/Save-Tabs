@@ -71,6 +71,12 @@ body {
 	font-weight: bold;
 }
 
+.navbar .header span#version {
+	font-size: smaller;
+	font-weight: 600;
+	align-self: flex-end;
+}
+
 .navbar .links {
 	display: -webkit-box;
 	display: -ms-flexbox;

@@ -473,6 +473,16 @@ window.addEventListener(`DOMContentLoaded`, () => {
 		// Check and Clear (old than 10 minutes) data stored.
 		localStorageExpiryCheck();
 
+		// Get current version from manifest.json
+		const currentVersion = browserAPI.runtime.getManifest().version;
+
+		// DOM of version element.
+		const versionDOMElement = document.getElementById(`version`);
+		// Set title.
+		versionDOMElement.title = `ver. ` + currentVersion;
+		// Set innertext of DOM element.
+		versionDOMElement.innerText = `ver. ` + currentVersion;
+
 		// Detect if file is selected using HTML input file.
 		document.getElementById(`file`).addEventListener(`change`, importTabs);
 

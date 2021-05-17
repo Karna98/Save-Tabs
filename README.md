@@ -69,7 +69,7 @@ Save Tab currently supports Chrome, Firefox.
                     - icons
                     - saveTab-chrome.css
             ```
-        3. Then procced with **Run Extension** (below) based on the browser.
+        3. Then proceed with **Run Extension** (below) based on the browser.
 
     * **Manual setup**
         - *Firefox*
@@ -85,7 +85,7 @@ Save Tab currently supports Chrome, Firefox.
             
             3. Rename ***firefox/manifest-firefox.json*** to ***firefox/manifest.json***.
 
-            4. Then procced with **Run Extension** (below) for Firefox.
+            4. Then proceed with **Run Extension** (below) for Firefox.
 
         - *Chrome*
             1. Create new folder named **chrome** in **Save-Tabs**.
@@ -111,7 +111,7 @@ Save Tab currently supports Chrome, Firefox.
                 ```
                 Save the updated file.
             
-            5. Then procced with **Run Extension** (below) for Chrome.
+            5. Then proceed with **Run Extension** (below) for Chrome.
 
     - **Run Extension**
         - *Firefox*

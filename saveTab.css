@@ -220,6 +220,53 @@ legend {
 	scrollbar-color: var(--color3) var(--color1);
 }
 
+input[type="checkbox"] {
+	height: 0;
+	width: 0;
+	display: none;
+}
+
+input[type="checkbox"] + label {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin-left: 1rem;
+	width: 3.5rem;
+	height: 2rem;
+	border-radius: 2rem;
+	background: var(--color4);
+	cursor: pointer;
+}
+
+input[type="checkbox"] + label:after{
+	content: '';
+	position: relative;
+	top: 0.25rem;
+	left: 0.25rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: var(--color1);
+	border-radius: 50%;
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}
+
+input[type="checkbox"]:checked + label {
+	background: var(--color5);
+}
+
+input[type="checkbox"]:checked + label:after {
+	left: calc(100% - 0.25rem);
+	-webkit-transform: translateX(-100%);
+	    -ms-transform: translateX(-100%);
+	        transform: translateX(-100%);
+}
+
+input[type="checkbox"] + label:active:after {
+	width: 2rem;
+}
+
 .button,
 .button:hover img {
 	-webkit-transition: all 0.5s ease-in-out;

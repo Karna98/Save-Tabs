@@ -40,6 +40,29 @@ legend {
 	font-size: .8rem
 }
 
+input[type="checkbox"] + label {
+	margin-left: 0.5rem;
+	width: 2.5rem;
+	height: 1.5rem;
+	border-radius: 1.5rem;
+}
+
+input[type="checkbox"] + label:after{
+	top: 0.125rem;
+	left: 0.125rem;
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+
+input[type="checkbox"]:checked + label:after {
+	left: calc(100% - 0.125rem);
+}
+
+input[type="checkbox"] + label:active:after {
+	width: 1.5rem;
+}
+
 .button {
 	width: 6rem;
 	height: 2rem;

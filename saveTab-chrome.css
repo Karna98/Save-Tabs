@@ -1,54 +1,251 @@
 @import url(saveTab.css);
 
 body {
-    width: calc(400px - 1rem);
-    height: calc(600px - 1rem)
+    width: 25rem;
+    height: 37.5rem;
 }
 
-.content,body {
-    padding: 0 .5rem
+/** 
+    Navigation Bar
+*/
+.navbar {
+    padding: 0.25rem 0.5rem;
+    width: calc(100% - 1rem);
 }
 
+.navbar .navbar-content {
+    padding: 0.25rem 0.5rem;
+    width: calc(100% - 1rem);
+    border-radius: 0.25rem;
+}
+
+/* Extension Name and Logo */
+.header span {
+    padding-left: 0.25rem;
+    font-size: 1.125rem;
+}
+
+/* Extension Support Links */
+.navbar-content .links {
+    width: 4rem;
+}
+
+.links span svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.export-section, .import-section, .logs-section {
+    padding: 0.25rem;
+}
+
+.export-section {
+    height: calc(25% - 0.5rem);
+}
+
+.import-section {
+    height: calc(17% - 0.5rem);
+}
+
+.logs-section {
+    height: calc(58% - 0.5rem);
+}
+
+/* Fieldset */
 fieldset {
-    padding: .25rem .5rem
+    padding: 0.25rem;
+    height: calc(100% - 0.5rem);
+    border-radius: 0.25rem;
 }
 
+.fieldset-content input#file-name {
+    padding: 0 0.5rem;
+    height: 1.5rem;
+    border-radius: 0.25rem;
+    border-bottom: 0.15rem solid var(--color_A_light_2);
+}
+
+input#file-name:focus {
+    border-bottom: 0.15rem solid var(--color_A);
+}
+
+/* Legend */
 legend {
-    font-size: 1rem
+    margin-left: 0.25rem;
+    width: calc(100% - 0.5rem);
+    border-radius: 0.25rem;
 }
 
-.description {
-    height: 2rem;
-    font-size: .9rem
+.legend-left .legend-title,.legend-left .legend-element {
+    padding: 0 0.25rem;
+    font-size: 1.1rem;
+    border-radius: 0.25rem;
 }
 
-.file-name {
-    padding: .1rem .5rem;
-    height: 1.5rem
+.legend-left .legend-element {
+    margin-left: 0.5rem;
 }
 
-.logs {
-    height: 15rem;
-    font-size: .8rem
+.info .section-info {
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
+.section-info svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Tooltip */
+.tooltip span {
+    right: 150%; 
+    padding: 0.125rem 0.25rem;	
+    border-radius: 0.25rem;
+}
+
+.tooltip span:after {
+    margin-top: -0.5rem;
+    border-width: 0.5rem;
+}
+
+/* Import & Export Button */
 .button {
     width: 6rem;
-    height: 2rem;
-    font-size: 1rem
+    height: 1.5rem;
+    font-size: 0.8rem;
+    border-radius: 0.25rem;
+}
+
+.button span {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+span svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.export {
+    border: 0.1rem solid var(--color_A);
+    -webkit-box-shadow: 0 0.125rem 0.125rem var(--color_A_light_2);
+            box-shadow: 0 0.125rem 0.125rem var(--color_A_light_2);
+}
+
+.export:hover {
+    -webkit-box-shadow: 0 0.25rem 0.125rem var(--color_A_light_2);
+            box-shadow: 0 0.25rem 0.125rem var(--color_A_light_2);
+} 
+
+.export:active {
+    -webkit-box-shadow: 0 0 0.125rem var(--color_A_light_2);
+            box-shadow: 0 0 0.125rem var(--color_A_light_2);
+}
+
+.import {
+    border: 0.1rem solid var(--color_B);
+    -webkit-box-shadow: 0 0.125rem 0.125rem var(--color_B_light_2);
+            box-shadow: 0 0.125rem 0.125rem var(--color_B_light_2);
+}
+
+.import:hover {
+    -webkit-box-shadow: 0 0.25rem 0.125rem var(--color_B_light_2);
+            box-shadow: 0 0.25rem 0.125rem var(--color_B_light_2);
+} 
+
+.import:active {
+    -webkit-box-shadow: 0 0 0.125rem var(--color_B_light_2);
+            box-shadow: 0 0 0.125rem var(--color_B_light_2);
+}
+
+/* Logs Section */
+.logs-section fieldset {
+    overflow: hidden;
+}
+
+.fieldset-content .logs {
+    padding: 0.25rem;
+    width: calc(100% - 0.5rem);
+    height: calc(100% - 0.5rem);
+    font-size: 0.8rem;
+}
+
+.logs .log {
+    padding: 0.25rem;
+    width: 21rem;
+}
+
+.meta-data .timestamp {
+    width: 6rem;
+}
+
+.meta-data .status {
+    margin-left: 0.25rem;
+    padding: 0.062rem 0.25rem;
+    font-weight: 500;
+    color: var(--color_0);
+}
+
+/* Log Toggle Button */
+input[type="checkbox"] + label {
+    width: 2rem;
+    height: 1.25rem;
+    border-radius: 1.25rem;
+}
+
+input[type="checkbox"] + label:after{
+    top: 0.125rem;
+    left: 0.125rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+input[type="checkbox"]:checked + label:after {
+    left: calc(100% - 0.125rem);
+}
+
+input[type="checkbox"] + label:active:after {
+    width: 1.25rem;
+}
+
+/** 
+    Footer
+*/
+.footer {
+    padding: 0.25rem 0.5rem;
+    width: calc(100% - 1rem);
+}
+
+.footer .footer-content {
+    padding: 0.25rem 0.5rem;
+    width: calc(100% - 1rem);
+    border-radius: 0.25rem;
+}
+
+.footer-content .developer-name {
+    padding: 0 0.125rem;
+    font-size: 0.8rem;
 }
 
 ::-webkit-scrollbar {
-    width: 10px
+    width: 0.5rem
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #fff;
-    border-radius: 10px
+    background-color: var(--color_C_light_2);
+    border-radius: 0.5rem
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.8);
-            box-shadow: inset 0 0 6px rgba(0,0,0,.8)
+    border-radius: 0.5rem;
+    -webkit-box-shadow: inset 0 0 0.5rem var(--color_C);
+            box-shadow: inset 0 0 0.5rem var(--color_C)
+}
+
+/** 
+    Extras
+*/
+.box-shadow {
+    -webkit-box-shadow: 0 0 0.2rem var(--color_shadow);
+            box-shadow: 0 0 0.2rem var(--color_shadow);
 }

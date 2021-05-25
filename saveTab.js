@@ -119,45 +119,80 @@ window.addEventListener(`DOMContentLoaded`, () => {
         // DOM of log section.
         const logSection = document.getElementById(`logs`);
 
+        // Clear all log section contents.
+        // TODO: Redesigning logging mechanism and optimize populating logs.
+        logSection.innerText = ``;
+
         // Get logs from local storage
         browserAPI.storage.local.get(`saveTabs`, (object) => {
             if (object.saveTabs !== undefined) {
-                logSection.innerHTML = object.saveTabs.logs
+                object.saveTabs.logs
                     .map(
                         (log) => {
                             const data = log.data;
                             // Log message in detail
-                            let verboseMessage;
+                            let verboseMessage = {
+                                normal: '',
+                                highlighted: ''
+                            };
 
                             if (data.type === `error`) {
                                 // If type is 'error'
-                                verboseMessage = data.message;
+                                verboseMessage.normal = data.message;
                             } else if (data.type === `success`) {
                                 // If type is 'success'
-                                verboseMessage = logMessageMapping[data.type][data.subType];
+                                verboseMessage.normal = logMessageMapping[data.type][data.subType];
 
                                 if (data.subType === `tab`)
                                     // If sub-type is 'tab'
-                                    verboseMessage += `<span class="highlight">${(data.url)}</span>`;
+                                    verboseMessage.highlighted = data.url;
                                 else
                                     // If sub-type is 'group'
-                                    verboseMessage += ((data.groupName === ``) ? `` : ` <span class="highlight">( ${(data.groupName)} )</span>`);
+                                    if (data.groupName !== ``)
+                                        verboseMessage.highlighted = ` ( ${data.groupName} )`;
                             } else {
                                 // If type is 'ready' or 'interrupted' or 'complete'
-                                verboseMessage = `${logMessageMapping[data.type]} <span class="highlight">${data.fileName}</span>`;
+                                verboseMessage.normal = logMessageMapping[data.type];
+                                verboseMessage.highlighted = data.fileName;
                             }
 
-                            return `
-                               <div class="log">
-                                   <div class="meta-data">
-                                       <span class="timestamp">${new Date(log.time).toLocaleTimeString().toUpperCase()}</span>
-                                       <span class="status ${data.type}">${data.type.toUpperCase()}</span>
-                                   </div>
-                                   <div class="description">
-                                       ${verboseMessage}
-                                   </div>
-                               </div>
-                               `;
+                            // Individual log division.
+                            let logDiv = document.createElement(`div`);
+                            logDiv.className = `log`;
+
+                            // Log's meta-data division.
+                            let metaDataDiv = document.createElement(`div`);
+                            metaDataDiv.className = 'meta-data';
+
+                            // Meta-data - timestamp span.
+                            let timeStampSpan = document.createElement(`span`);
+                            timeStampSpan.className = `timestamp`;
+                            timeStampSpan.appendChild(document.createTextNode(new Date(log.time).toLocaleTimeString().toUpperCase()));
+                            metaDataDiv.appendChild(timeStampSpan);
+
+                            // Meta-data - status span.
+                            let statusSpan = document.createElement(`span`);
+                            statusSpan.className = `status ${data.type}`;
+                            statusSpan.appendChild(document.createTextNode(data.type.toUpperCase()));
+                            metaDataDiv.appendChild(statusSpan);
+
+                            logDiv.appendChild(metaDataDiv);
+
+                            // Log's description division.
+                            let descriptionDiv = document.createElement(`div`);
+                            descriptionDiv.className = `description`;
+                            descriptionDiv.appendChild(document.createTextNode(verboseMessage.normal));
+
+                            if (verboseMessage.highlighted !== ``) {
+                                let highlightSpan = document.createElement('span');
+                                highlightSpan.className = 'highlight';
+                                highlightSpan.appendChild(document.createTextNode(verboseMessage.highlighted));
+                                descriptionDiv.appendChild(highlightSpan);
+                            }
+
+                            logDiv.appendChild(descriptionDiv);
+
+                            logSection.appendChild(logDiv);
                         })
                     .join(``);
             }

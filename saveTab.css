@@ -193,14 +193,14 @@ body {
 }
 
 .export-section {
-    height: 20%;
+    height: 25%;
 }
 .import-section {
-    height: 15%;
+    height: 17%;
 }
 
 .logs-section {
-    height: 65%;
+    height: 58%;
 }
 
 .export-section fieldset {

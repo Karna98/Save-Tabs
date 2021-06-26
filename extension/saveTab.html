@@ -2,165 +2,271 @@
 
 <html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <title>Save Tabs</title>
-    <link rel="stylesheet" type="text/css" href="saveTab.css" />
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Save Tabs</title>
+        <link rel="stylesheet" type="text/css" href="saveTab.css" />
+    </head>
 
-<body>
-    <div class="navbar">
-        <div class="navbar-content box-shadow">
-            <div class="header">
-                <img src="icons/Save_Tabs_32.png" alt="Save Tabs Logo" />
-                <span>Save Tabs</span>
-                <span id="version"></span>
-            </div>
-            <div class="links">
-                <span id="links-github" class="box-shadow" title="Source Code">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                        width="24" height="24" viewBox="0 0 24 24">
-                        <path
-                            d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
-                    </svg>
-                </span>
-                <span id="links-report" class="box-shadow" title="Issues & Suggestions">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0V0z" fill="none" />
-                        <path
-                            d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-4 4v3c0 .22-.03.47-.07.7l-.1.65-.37.65c-.72 1.24-2.04 2-3.46 2s-2.74-.77-3.46-2l-.37-.64-.1-.65C8.03 15.48 8 15.23 8 15v-4c0-.23.03-.48.07-.7l.1-.65.37-.65c.3-.52.72-.97 1.21-1.31l.57-.39.74-.18c.31-.08.63-.12.94-.12.32 0 .63.04.95.12l.68.16.61.42c.5.34.91.78 1.21 1.31l.38.65.1.65c.04.22.07.47.07.69v1zm-6 2h4v2h-4zm0-4h4v2h-4z" />
-                    </svg>
-                </span>
+    <body>
+        <div class="navbar">
+            <div class="navbar-content box-shadow">
+                <div class="header">
+                    <img src="icons/Save_Tabs_32.png" alt="Save Tabs Logo" />
+                    <span>Save Tabs</span>
+                    <span id="version"></span>
+                </div>
+                <div class="links">
+                    <span
+                        id="links-github"
+                        class="box-shadow"
+                        title="Source Code"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            version="1.1"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"
+                            />
+                        </svg>
+                    </span>
+                    <span
+                        id="links-report"
+                        class="box-shadow"
+                        title="Issues & Suggestions"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24px"
+                            viewBox="0 0 24 24"
+                            width="24px"
+                            fill="#000000"
+                        >
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-4 4v3c0 .22-.03.47-.07.7l-.1.65-.37.65c-.72 1.24-2.04 2-3.46 2s-2.74-.77-3.46-2l-.37-.64-.1-.65C8.03 15.48 8 15.23 8 15v-4c0-.23.03-.48.07-.7l.1-.65.37-.65c.3-.52.72-.97 1.21-1.31l.57-.39.74-.18c.31-.08.63-.12.94-.12.32 0 .63.04.95.12l.68.16.61.42c.5.34.91.78 1.21 1.31l.38.65.1.65c.04.22.07.47.07.69v1zm-6 2h4v2h-4zm0-4h4v2h-4z"
+                            />
+                        </svg>
+                    </span>
+                    <span id="links-guide" class="box-shadow" title="Guide">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24px"
+                            viewBox="0 0 24 24"
+                            width="24px"
+                            fill="#000000"
+                        >
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
+                            />
+                        </svg>
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="content" id="popup-content">
-        <div class="export-section">
-            <fieldset class="box-shadow">
-                <legend>
-                    <div class="legend-left">
-                        <div class="legend-title box-shadow">Export Tabs</div>
-                    </div>
-                    <div class="legend-right">
-                        <div class="info">
-                            <div class="tooltip">
-                                <span>Exports all the open tabs to file.</span>
-                                <div class="section-info box-shadow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                        width="24px" fill="#000000">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
-                                        <path
-                                            d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-                                    </svg>
+        <div class="content" id="popup-content">
+            <div class="export-section">
+                <fieldset class="box-shadow">
+                    <legend>
+                        <div class="legend-left">
+                            <div class="legend-title box-shadow">
+                                Export Tabs
+                            </div>
+                        </div>
+                        <div class="legend-right">
+                            <div class="info">
+                                <div class="tooltip">
+                                    <span
+                                        >Exports all the open tabs to
+                                        file.</span
+                                    >
+                                    <div class="section-info box-shadow">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            height="24px"
+                                            viewBox="0 0 24 24"
+                                            width="24px"
+                                            fill="#000000"
+                                        >
+                                            <path
+                                                d="M0 0h24v24H0V0z"
+                                                fill="none"
+                                            />
+                                            <path
+                                                d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </legend>
+                    </legend>
 
-                <div class="fieldset-content">
-                    <input type="text" id="file-name" placeholder="Enter file name. (Optional)" />
-                    <div class="button export" id="export">
-                        EXPORT
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
-                                viewBox="0 0 24 24" width="24px" fill="#000000">
-                                <g>
-                                    <rect fill="none" height="24" width="24" />
-                                </g>
-                                <g>
-                                    <path
-                                        d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M17,11l-1.41-1.41L13,12.17V4h-2v8.17L8.41,9.59L7,11l5,5 L17,11z" />
-                                </g>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-        <div class="import-section">
-            <fieldset class="box-shadow">
-                <legend>
-                    <div class="legend-left">
-                        <div class="legend-title box-shadow">Import Tabs</div>
-                    </div>
-                    <div class="legend-right">
-                        <div class="info">
-                            <div class="tooltip">
-                                <span>Select file (.json) to import tabs.</span>
-                                <div class="section-info box-shadow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                        width="24px" fill="#000000">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                    <div class="fieldset-content">
+                        <input
+                            type="text"
+                            id="file-name"
+                            placeholder="Enter file name. (Optional)"
+                        />
+                        <div class="button export" id="export">
+                            EXPORT
+                            <span>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    enable-background="new 0 0 24 24"
+                                    height="24px"
+                                    viewBox="0 0 24 24"
+                                    width="24px"
+                                    fill="#000000"
+                                >
+                                    <g>
+                                        <rect
+                                            fill="none"
+                                            height="24"
+                                            width="24"
+                                        />
+                                    </g>
+                                    <g>
                                         <path
-                                            d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-                                    </svg>
+                                            d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M17,11l-1.41-1.41L13,12.17V4h-2v8.17L8.41,9.59L7,11l5,5 L17,11z"
+                                        />
+                                    </g>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="import-section">
+                <fieldset class="box-shadow">
+                    <legend>
+                        <div class="legend-left">
+                            <div class="legend-title box-shadow">
+                                Import Tabs
+                            </div>
+                        </div>
+                        <div class="legend-right">
+                            <div class="info">
+                                <div class="tooltip">
+                                    <span
+                                        >Select file (.json) to import
+                                        tabs.</span
+                                    >
+                                    <div class="section-info box-shadow">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            height="24px"
+                                            viewBox="0 0 24 24"
+                                            width="24px"
+                                            fill="#000000"
+                                        >
+                                            <path
+                                                d="M0 0h24v24H0V0z"
+                                                fill="none"
+                                            />
+                                            <path
+                                                d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </legend>
-                <div class="fieldset-content">
-                    <input type="file" id="file" accept=".json" class="hidden" />
-                    <label for="file" class="button import">
-                        IMPORT
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
-                                viewBox="0 0 24 24" width="24px" fill="#008000">
-                                <g>
-                                    <rect fill="none" height="24" width="24" />
-                                </g>
-                                <g>
-                                    <path
-                                        d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z" />
-                                </g>
-                            </svg>
-                        </span>
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-        <div class="logs-section">
-            <fieldset class="box-shadow">
-                <legend>
-                    <div class="legend-left">
-                        <div class="legend-title box-shadow">Logs</div>
-                        <div class="legend-element box-shadow">
-                            <input id="logs-state" type="checkbox" />
-                            <label for="logs-state" title="Logging ON/OFF"></label>
-                        </div>
-                    </div>
-                    <div class="legend-right">
-                        <div class="info">
-                            <div class="tooltip">
-                                <span>Display Logs.</span>
-                                <div class="section-info box-shadow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                        width="24px" fill="#000000">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                    </legend>
+                    <div class="fieldset-content">
+                        <input
+                            type="file"
+                            id="file"
+                            accept=".json"
+                            class="hidden"
+                        />
+                        <label for="file" class="button import">
+                            IMPORT
+                            <span>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    enable-background="new 0 0 24 24"
+                                    height="24px"
+                                    viewBox="0 0 24 24"
+                                    width="24px"
+                                    fill="#008000"
+                                >
+                                    <g>
+                                        <rect
+                                            fill="none"
+                                            height="24"
+                                            width="24"
+                                        />
+                                    </g>
+                                    <g>
                                         <path
-                                            d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-                                    </svg>
+                                            d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"
+                                        />
+                                    </g>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="logs-section">
+                <fieldset class="box-shadow">
+                    <legend>
+                        <div class="legend-left">
+                            <div class="legend-title box-shadow">Logs</div>
+                            <div class="legend-element box-shadow">
+                                <input id="logs-state" type="checkbox" />
+                                <label
+                                    for="logs-state"
+                                    title="Logging ON/OFF"
+                                ></label>
+                            </div>
+                        </div>
+                        <div class="legend-right">
+                            <div class="info">
+                                <div class="tooltip">
+                                    <span>Display Logs.</span>
+                                    <div class="section-info box-shadow">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            height="24px"
+                                            viewBox="0 0 24 24"
+                                            width="24px"
+                                            fill="#000000"
+                                        >
+                                            <path
+                                                d="M0 0h24v24H0V0z"
+                                                fill="none"
+                                            />
+                                            <path
+                                                d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </legend>
+                    <div class="fieldset-content">
+                        <div id="logs" class="logs"></div>
                     </div>
-                </legend>
-                <div class="fieldset-content">
-                    <div id="logs" class="logs"></div>
-                </div>
-            </fieldset>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="footer-content box-shadow">
-            <div>
-                Developed by <span class="developer-name">VEDANT WAKALKAR</span>
+                </fieldset>
             </div>
         </div>
-    </div>
-    <script src="saveTab.js"></script>
-</body>
-
+        <div class="footer">
+            <div class="footer-content box-shadow">
+                <div>
+                    Developed by
+                    <span class="developer-name">VEDANT WAKALKAR</span>
+                </div>
+            </div>
+        </div>
+        <script src="saveTab.js"></script>
+    </body>
 </html>

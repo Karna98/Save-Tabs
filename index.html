@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Save Tabs</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="extension/icons/Save_Tabs_16.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="extension/icons/Save_Tabs_32.png"
+        />
+    </head>
+
+    <body>
+        <header>
+            <nav class="border-radius-type-A border-shadow">
+                <div class="nav-left border-radius-type-A">
+                    <a href="/Save-Tabs" class="nav-logo">
+                        <img alt="Save Tabs Logo" />
+                        <span>Save Tabs</span>
+                    </a>
+                    <div class="hamburger">
+                        <div class="bars">
+                            <span class="border-radius-type-A"> </span>
+                            <span class="border-radius-type-A"> </span>
+                            <span class="border-radius-type-A"> </span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="border-radius-type-A">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link border-radius-type-A"
+                            >Home</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a href="#guide" class="nav-link border-radius-type-A"
+                            >Guide</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a href="#privacy" class="nav-link border-radius-type-A"
+                            >Privacy</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div id="home" class="poster">
+                <div class="section-left">
+                    <div class="brand border-radius-type-A border-shadow">
+                        <div class="logo">
+                            <img alt="Save Tabs Logo" />
+                        </div>
+
+                        <div class="title">
+                            <h2>Save Tabs</h2>
+                        </div>
+                        <div class="description">
+                            Extension to Export and Import Tabs.
+                        </div>
+                    </div>
+                    <div
+                        class="
+                            brand-download
+                            border-radius-type-A border-shadow
+                        "
+                    >
+                        <div class="title">
+                            <h3>Available On</h3>
+                        </div>
+                        <div class="links">
+                            <a
+                                class="border-radius-type-A border-shadow"
+                                href="https://chrome.google.com/webstore/detail/save-tabs/ljokfgphjbhjheflldgfmjligcmcmhmn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    class="border-radius-type-A"
+                                    src="assets/chrome_webstore.png"
+                                    alt="Get it on Chrome Webstore"
+                                />
+                            </a>
+                            <a
+                                class="border-radius-type-A border-shadow"
+                                href="https://addons.mozilla.org/en-US/firefox/addon/save-tabs/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    class="border-radius-type-A"
+                                    src="assets/firefox_addon.png"
+                                    alt="Get it on FireFox Add-Ons"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="section-right">
+                    <div class="feature border-radius-type-A border-shadow">
+                        <div class="title">
+                            <h3>Features</h3>
+                        </div>
+                        <ul>
+                            <li>
+                                Easy Export and Import of Tabs with one click.
+                            </li>
+                            <li>Save Exported Tabs with Custom Name.</li>
+                            <li>
+                                Cross Browser Support. (as of now
+                                <b>Chrome</b> and <b>Firefox</b>)
+                            </li>
+                            <li>Logs Section.</li>
+                            <li>
+                                Support for Grouped Tabs (<b>Chrome</b> only).
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="source-code border-radius-type-A border-shadow">
+                        <div class="title">
+                            <h3>Source Code</h3>
+                        </div>
+                        <div class="links">
+                            <a
+                                class="
+                                    github
+                                    border-radius-type-A border-shadow
+                                "
+                                href="https://github.com/karna98/Save-Tabs"
+                                target="blank"
+                            >
+                                <div class="github" title="View on Github">
+                                    <span class="button-text">View on</span>
+                                    <span>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            version="1.1"
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"
+                                            />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="guide" class="guide">
+                <div class="title">
+                    <h2>Guide</h2>
+                </div>
+                <div class="content">
+                    <div class="export border-radius-type-A border-shadow">
+                        <div class="title">
+                            <h4>Export</h4>
+                        </div>
+                        <div class="preview border-radius-type-A">
+                            <img
+                                src="assets/Preview/Save_Tabs_Export.png"
+                                alt="Export Guide"
+                            />
+                        </div>
+                        <div class="points">
+                            <sub>
+                                <i
+                                    >* Assuming multiple tabs are open in
+                                    browser.</i
+                                >
+                            </sub>
+                            <div class="title">
+                                <b># Default Export</b>
+                            </div>
+                            <ol>
+                                <li>Open <b>Save Tabs</b> Extension.</li>
+                                <li>Click on <b>Export</b> button.</li>
+                                <li>Native File Explorer open to save file.</li>
+                                <li>Click on <b>Save</b>.</li>
+                            </ol>
+                            <div class="title">
+                                <b># Custom Name Export</b>
+                            </div>
+                            <ol>
+                                <li>Open <b>Save Tabs</b> Extension.</li>
+                                <li>
+                                    Enter custom name in
+                                    <i>"Enter file name"</i>. (Ex.
+                                    <i>Research-Project-X</i>)
+                                </li>
+                                <li>Click on <b>Export</b> button.</li>
+                                <li>Native File Explorer open to save file.</li>
+                                <li>Click on <b>Save</b>.</li>
+                            </ol>
+                            <b>Tabs will be exported successfully in file.</b>
+                        </div>
+                    </div>
+                    <div class="import border-radius-type-A border-shadow">
+                        <div class="title">
+                            <h4>Import</h4>
+                        </div>
+                        <div class="preview border-radius-type-A">
+                            <img
+                                src="assets/Preview/Save_Tabs_Import.png"
+                                alt="Import Guide"
+                            />
+                        </div>
+                        <div class="points">
+                            <sub>
+                                <i
+                                    >* Importing file which are exported using
+                                    "Save Tabs" Extension.</i
+                                >
+                            </sub>
+                            <ol>
+                                <li>Open <b>Save Tabs</b> Extension.</li>
+                                <li>Click on <b>Import</b> button.</li>
+                                <li>
+                                    Native File Explorer opens. Select the file
+                                    to be imported. (Ex.
+                                    <i>Research-Project-X.json</i>)
+                                </li>
+                            </ol>
+                            <b
+                                >Tabs will be imported successfully in
+                                browser.</b
+                            >
+                        </div>
+                    </div>
+                    <div class="logs border-radius-type-A border-shadow">
+                        <div class="title">
+                            <h4>Logs</h4>
+                        </div>
+                        <div class="preview border-radius-type-A">
+                            <img
+                                src="assets/Preview/Save_Tabs_Logs.png"
+                                alt="Logging Guide"
+                            />
+                        </div>
+                        <div class="points">
+                            <span>
+                                <b>Logs Section</b> lets user know the status of
+                                <b>Export</b> or <b>Import</b> tabs.</span
+                            >
+                            <div class="title">
+                                <b># Enable/Disable Logs</b>
+                            </div>
+                            <ol>
+                                <li>Open <b>Save Tabs</b> Extension.</li>
+                                <li>
+                                    Click on toggle button next to
+                                    <b>Logs</b> title.
+                                </li>
+                            </ol>
+                            <div>
+                                If Logs are <b>enabled</b>, user can see the
+                                status of <b>Export</b> or <b>Import</b>.
+                            </div>
+                            <sub>
+                                <br />
+                                <i>
+                                    * Logs will be displayed for 10 minutes from
+                                    last use.
+                                </i>
+                            </sub>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery">
+                <div class="title">
+                    <h2>Gallery</h2>
+                </div>
+                <div class="content">
+                    <div class="screenshots">
+                        <div class="screenshot-content">
+                            <div
+                                class="body border-radius-type-A border-shadow"
+                            >
+                                <div class="image">
+                                    <img
+                                        src="assets/screenshots/Save_Tabs.PNG"
+                                        alt="Screenshots - 1"
+                                    />
+                                </div>
+                                <div class="description border-radius-type-A">
+                                    Preview of Save Tabs extension
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screenshot-content">
+                            <div
+                                class="body border-radius-type-A border-shadow"
+                            >
+                                <div class="image">
+                                    <img
+                                        src="assets/screenshots/Save_Tabs_Export.PNG"
+                                        alt="Screenshots - 2"
+                                    />
+                                </div>
+                                <div class="description border-radius-type-A">
+                                    Exporting tabs
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screenshot-content">
+                            <div
+                                class="body border-radius-type-A border-shadow"
+                            >
+                                <div class="image">
+                                    <img
+                                        src="assets/screenshots/Save_Tabs_Export-Custom.PNG"
+                                        alt="Screenshots - 3"
+                                    />
+                                </div>
+                                <div class="description border-radius-type-A">
+                                    Custom file name to store exported tabs
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screenshot-content">
+                            <div
+                                class="body border-radius-type-A border-shadow"
+                            >
+                                <div class="image">
+                                    <img
+                                        src="assets/screenshots/Save_Tabs_Import.PNG"
+                                        alt="Screenshots - 4"
+                                    />
+                                </div>
+                                <div class="description border-radius-type-A">
+                                    Importing tabs
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screenshot-content">
+                            <div
+                                class="body border-radius-type-A border-shadow"
+                            >
+                                <div class="image">
+                                    <img
+                                        src="assets/screenshots/Save_Tabs_Import-Grouped.PNG"
+                                        alt="Screenshots - 5"
+                                    />
+                                </div>
+                                <div class="description border-radius-type-A">
+                                    Importing Grouped tabs
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screenshot-content">
+                            <div
+                                class="body border-radius-type-A border-shadow"
+                            >
+                                <div class="image">
+                                    <img
+                                        src="assets/screenshots/Save_Tabs_Logs.PNG"
+                                        alt="Screenshots - 6"
+                                    />
+                                </div>
+                                <div class="description border-radius-type-A">
+                                    Logging Section
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="privacy" class="privacy">
+                <div class="title">
+                    <h2>Privacy</h2>
+                </div>
+                <div class="content border-radius-type-A border-shadow">
+                    <div class="privacy-content">
+                        <b> <u>NO DATA</u> </b> is <b> <u>COLLECTED</u> </b> or
+                        <b> <u>USED</u> </b> or <b> <u>SHARED</u> </b>.
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="border-radius-type-A border-shadow">
+            <p>
+                Developed by
+                <span class="developer-name">
+                    <a
+                        href="https://karna98.github.io/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        VEDANT WAKALKAR
+                    </a>
+                </span>
+            </p>
+        </footer>
+        <script src="index.js"></script>
+    </body>
+</html>

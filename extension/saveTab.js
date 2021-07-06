@@ -498,6 +498,9 @@ window.addEventListener(`DOMContentLoaded`, () => {
             case `links-report`:
                 url = `https://github.com/karna98/Save-Tabs#issues-and-suggestions`;
                 break;
+            case `links-guide`:
+                url = `https://karna98.github.io/Save-Tabs/#guide`;
+                break;
         }
 
         browserAPI.tabs
@@ -551,6 +554,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
         // Open link in new tab when clicked.
         document.getElementById(`links-github`).addEventListener(`click`, () => openURL(`links-github`));
         document.getElementById(`links-report`).addEventListener(`click`, () => openURL(`links-report`));
+        document.getElementById(`links-guide`).addEventListener(`click`, () => openURL(`links-guide`));
     };
 
     init();

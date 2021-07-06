@@ -5,63 +5,42 @@
     <h1>Save Tabs</h1>
 </div>
 
-## About
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ljokfgphjbhjheflldgfmjligcmcmhmn.svg?style=plastic)](https://chrome.google.com/webstore/detail/detail/save-tabs/ljokfgphjbhjheflldgfmjligcmcmhmn) [![Firefox Add-ons](https://img.shields.io/amo/v/save-tabs.svg?style=plastic)](https://addons.mozilla.org/firefox/addon/save-tabs/)
+
+
+## 💡 About
 
 Save Tab is a browser extension that helps to exports and imports tabs currently opened in the browser window.
 
-## For whom?
+### For whom?
+One who open lots and lots of tabs in a single browser and want to revisit the same sets of tabs after a while.
 
--   One who open lots and lots of tabs in a single browser and want to revisit the same sets of tabs after a while.
 
-## Features
+## 🎯 Features
 
-1. **Easy Export and Import of Tabs**
+◻️ **Easy Export and Import of Tabs**
 
-2. **Export tabs with Custom Name**
+◻️ **Export tabs with Custom Name**
 
-3. **Cross Browser Support** _(as of now Chrome and Firefox)_
+◻️ **Cross Browser Support** _(as of now Chrome and Firefox)_
 
-4. **Logs Section**
+◻️ **Logs Section**
 
-5. **Export and Import of Grouped Tabs** _(Chrome only)_
+◻️ **Export and Import of Grouped Tabs** _(Chrome only)_
 
-## Browsers Supported
 
-Save Tab currently supports Chrome, Firefox.
+## 🌐 Browsers Supported
 
-![Firefox](assets/firefox.png "Firefox")
-![Chrome](assets/chrome.png "Chrome")
+<img alt="Chrome" title="Chrome" src="assets/chrome.png">  <img alt="Firefox" title="Firefox" src="assets/firefox.png"> 
 
-## Add to Browser
+
+## ⚙️ Install
 
 ### From Web Store
+<a title="Add from Chrome Web Store" href="https://chrome.google.com/webstore/detail/save-tabs/ljokfgphjbhjheflldgfmjligcmcmhmn" target="_blank" rel="noopener noreferrer" style="text-decoration: none"> <img src="assets/chrome_webstore.png" alt="Get it on Chrome Webstore" width="300px" height="85px"> </a>
 
-<table>
-    <tr>
-        <td>
-            <a
-                title="Add from Chrome Web Store"
-                href="https://chrome.google.com/webstore/detail/save-tabs/ljokfgphjbhjheflldgfmjligcmcmhmn"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="text-decoration: none;"
-            >
-                <img src="assets/chrome_webstore.png" alt="Get it on Chrome Webstore" style="width:300px; height:85px; background:white; border-radius:1rem">
-            </a>
-        </td>
-        <td>
-            <a
-                title="Add from Firefox Add-Ons"
-                href="https://addons.mozilla.org/en-US/firefox/addon/save-tabs/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="text-decoration: none;"
-            >
-            <img src="assets/firefox_addon.png" alt="Get it on Chrome Webstore" style="width:300px; height:85px;background:white; border-radius:1rem">
-            </a>
-        </td>
-    </tr>
-</table>
+<a title="Add from Firefox Add-Ons" href="https://addons.mozilla.org/en-US/firefox/addon/save-tabs/"
+   target="_blank" rel="noopener noreferrer" style="text-decoration: none"> <img src="assets/firefox_addon.png" alt="Get it on Chrome Webstore" width="300px" height="85px"> </a>
 
 ### From Repository
 
@@ -143,7 +122,8 @@ Save Tab currently supports Chrome, Firefox.
 
                 Refer [_Manage your Extension_](https://support.google.com/chrome_webstore/answer/2664769?hl=en) to pin extension on the browser toolbar.
 
-## Issues and Suggestions
+
+## 📝 Issues and Suggestions
 
 Please create new [Issue](https://github.com/Karna98/Save-Tabs/issues/new) for :
 
@@ -151,7 +131,8 @@ Please create new [Issue](https://github.com/Karna98/Save-Tabs/issues/new) for :
 -   Proposing new features
 -   Discussion related to this project.
 
-## Contributing
+
+## 💻 Contributing
 
 Contributions are always WELCOME!
 
@@ -161,6 +142,7 @@ Before sending a Pull Request, please make sure that you're assigned the task on
 -   If no relevant issue exists, open a new issue and get it assigned to yourself on GitHub.
 -   Please proceed with a Pull Request only after you're assigned.
 
-## License
+
+## ⚠️ License
 
 [MIT License](LICENSE)

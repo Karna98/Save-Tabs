@@ -294,10 +294,10 @@ window.addEventListener(`DOMContentLoaded`, () => {
             return `Save_Tabs_${new Date()
                 .toLocaleString()
                 .replaceAll(/(, )| /g, "_")
-                .replaceAll(/[,://]/g, "-").toUpperCase()}.json`;
+                .replaceAll(/[,://]/g, "-").toUpperCase()}.json.tabs`;
         } else {
             // User Input File Name.
-            return `${fileName}.json`;
+            return `${fileName}.json.tabs`;
         }
     };
 

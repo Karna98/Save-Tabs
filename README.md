@@ -59,7 +59,7 @@ One who open lots and lots of tabs in a single browser and want to revisit the s
 
         1. Open a terminal in Ubuntu or Git Bash within Sa and execute
             ```
-            ./setup.sh
+            make
             ```
 
         2. On successful execution, new folder 'firefox' and 'chrome' with the following structure will be created

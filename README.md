@@ -122,6 +122,21 @@ One who open lots and lots of tabs in a single browser and want to revisit the s
 
                 Refer [_Manage your Extension_](https://support.google.com/chrome_webstore/answer/2664769?hl=en) to pin extension on the browser toolbar.
 
+        - _Cross Platform_ [ **Only For Development** ]
+
+            Reference : https://github.com/mozilla/web-ext
+            
+            1. Run `npm install --global web-ext`
+
+            2. Navigate to `extension` directory and create a copy of  `manifest-firefox.json` and rename it to `manifest.json`
+
+            3. Then run `web-ext lint` for linting related issues.
+
+            4. Finally run following commands for development environment.
+                - For Firefox instance, `web-ext run --devtools`
+                - For Chrome instance, `web-ext run --verbose --devtools --target chromium`
+
+            **Note**: In case, if `web-ext` command doesn't work, then try to run with `npx web-ext`. 
 
 ## 📝 Issues and Suggestions
 
